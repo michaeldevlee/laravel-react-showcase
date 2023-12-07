@@ -13,7 +13,7 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        //
+        return Customers::all();
     }
 
     /**
