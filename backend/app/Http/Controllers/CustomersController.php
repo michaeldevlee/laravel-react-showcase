@@ -18,19 +18,13 @@ class CustomersController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(StoreCustomersRequest $request)
     {
-        //
+        $customer = Customers::create($request->validated());
+        return CustomerResource::make($customer);
+
     }
 
     /**
@@ -39,14 +33,6 @@ class CustomersController extends Controller
     public function show(Customers $customers)
     {
         return CustomerResource::make($customers);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Customers $customers)
-    {
-        //
     }
 
     /**

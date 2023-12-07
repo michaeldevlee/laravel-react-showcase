@@ -13,7 +13,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        //
+        return Invoice::all();
     }
 
     /**

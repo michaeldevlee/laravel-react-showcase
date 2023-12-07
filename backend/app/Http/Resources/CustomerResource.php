@@ -16,7 +16,9 @@ class CustomerResource extends JsonResource
     {
         return [
             'id'=> $this->id,
-            'wow' => 'wow'
+            'name' => $this->name,
+            'active' => (bool) $this->active,
+            'invoices' => $this->invoices
         ];
     }
 }

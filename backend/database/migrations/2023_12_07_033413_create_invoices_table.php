@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->default(1);
+            $table->unsignedBigInteger('customers_id')->default(1);
+            $table->float('cost')->default(10.00);
             $table->timestamps();
         });
     }
