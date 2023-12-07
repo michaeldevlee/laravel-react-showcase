@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCustomersRequest;
 use App\Http\Requests\UpdateCustomersRequest;
+use App\Http\Resources\CustomerResource;
 use App\Models\Customers;
 
 class CustomersController extends Controller
@@ -13,7 +14,7 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        return Customers::all();
+        return CustomerResource::collection(Customers::all());
     }
 
     /**
@@ -37,7 +38,7 @@ class CustomersController extends Controller
      */
     public function show(Customers $customers)
     {
-        //
+        return CustomerResource::make($customers);
     }
 
     /**
