@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCustomersRequest;
 use App\Http\Requests\UpdateCustomersRequest;
 use App\Http\Resources\CustomersResource;
 use App\Models\Customers;
+use Illuminate\Http\Request;
 
 class CustomersController extends Controller
 {
@@ -14,6 +15,7 @@ class CustomersController extends Controller
      */
     public function index()
     {
+
         return CustomersResource::collection(Customers::all());
     }
 
