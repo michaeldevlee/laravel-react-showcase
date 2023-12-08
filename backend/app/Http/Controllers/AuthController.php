@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use App\Traits\HttpResponses;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class AuthController extends Controller
         return 'this is the login api';
     }
 
-    public function register(UserStoreRequest $request){
+    public function register(StoreUserRequest $request){
         $request->validated($request->all());
         $user = User::create([
             'name'=>$request->name,
