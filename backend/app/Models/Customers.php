@@ -10,7 +10,7 @@ class Customers extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'active'];
 
     public function invoices(): HasMany
     {

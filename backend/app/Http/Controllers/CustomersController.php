@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCustomersRequest;
 use App\Http\Requests\UpdateCustomersRequest;
-use App\Http\Resources\CustomerResource;
+use App\Http\Resources\CustomersResource;
 use App\Models\Customers;
 
 class CustomersController extends Controller
@@ -14,7 +14,7 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        return CustomerResource::collection(Customers::all());
+        return CustomersResource::collection(Customers::all());
     }
 
     /**
@@ -23,31 +23,34 @@ class CustomersController extends Controller
     public function store(StoreCustomersRequest $request)
     {
         $customer = Customers::create($request->validated());
-        return CustomerResource::make($customer);
+        return CustomersResource::make($customer);
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Customers $customers)
+    public function show(Customers $customer)
     {
-        return CustomerResource::make($customers);
+
+        return CustomersResource::make($customer);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCustomersRequest $request, Customers $customers)
+    public function update(UpdateCustomersRequest $request, Customers $customer)
     {
-        //
+        $customer->update($request->validated());
+        return CustomersResource::make($customer);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Customers $customers)
+    public function destroy(Customers $customer)
     {
-        //
+        $customer->delete();
+        return response()->noContent();
     }
 }

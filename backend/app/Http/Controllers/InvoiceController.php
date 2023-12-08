@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
+use App\Http\Resources\InvoiceResource;
 use App\Models\Invoice;
 
 class InvoiceController extends Controller
@@ -13,15 +14,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        return Invoice::all();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return InvoiceResource::collection(Invoice::all());
     }
 
     /**
@@ -29,7 +22,8 @@ class InvoiceController extends Controller
      */
     public function store(StoreInvoiceRequest $request)
     {
-        //
+        $invoice = Invoice::create($request->validated());
+        return InvoiceResource::make($invoice);
     }
 
     /**
@@ -37,15 +31,7 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Invoice $invoice)
-    {
-        //
+        return InvoiceResource::make($invoice);
     }
 
     /**

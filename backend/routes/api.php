@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\InvoiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/v1')->group(function (){
     Route::apiResource('/customers', CustomersController::class);
+    Route::apiResource('/invoices', InvoiceController::class);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

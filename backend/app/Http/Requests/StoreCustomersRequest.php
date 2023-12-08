@@ -23,7 +23,7 @@ class StoreCustomersRequest extends FormRequest
     {
         return [
             'name' => 'string',
-            'active' => 'required'
+            'active' => 'boolean|required'
         ];
     }
 }
