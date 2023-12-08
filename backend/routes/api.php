@@ -17,16 +17,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('/v1')->group(function (){
-    Route::apiResource('/customers', CustomersController::class);
-    Route::apiResource('/invoices', InvoiceController::class);
-});
-
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//public routes
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('/logout', [AuthController::class, 'logout']);
+
+// protected routes 
+Route::group(['middleware' => ['auth:sanctum']],function(){
+    Route::prefix('/v1')->group(function (){
+        Route::apiResource('/customers', CustomersController::class);
+        Route::apiResource('/invoices', InvoiceController::class);
+    });
+    
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+});
