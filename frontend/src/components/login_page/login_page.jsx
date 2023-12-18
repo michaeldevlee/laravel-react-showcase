@@ -27,10 +27,10 @@ const LoginPage = () => {
 
         const response = await fetch ('http://localhost'+ '/api/login' , options)
         const data = await response.json();
-        // if (data.user){
-        //     localStorage.setItem('user', JSON.stringify(data))
-        //     window.location.reload(false);
-        // }
+        console.log(data.data.token);
+        if (data.data){
+            localStorage.setItem('token', data.data.token)
+        }
     }
     
     return ( 

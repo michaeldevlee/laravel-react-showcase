@@ -6,6 +6,7 @@ import LoginPage from './components/login_page/login_page';
 import SignUpPage from './components/signup_page/signup_page';
 
 function App() {
+  
   return (
     <Router>
     <Navbar/>  
