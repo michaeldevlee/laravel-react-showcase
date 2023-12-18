@@ -2,6 +2,7 @@ version: '3'
 services:
   # Nginx service
   nginx:
+    container_name: nginx
     image: nginx:latest
     ports:
       - "8080:80" 
@@ -16,6 +17,7 @@ services:
 
   # PHP service
   php:
+    container_name: php
     build:
       context: .
       dockerfile: Dockerfile
@@ -30,6 +32,7 @@ services:
 
   # MySQL service
   mysql:
+    container_name: mysql
     image: mysql:latest
     environment:
       MYSQL_DATABASE: laravel_db
