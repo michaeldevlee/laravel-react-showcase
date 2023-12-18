@@ -14,8 +14,8 @@ const LoginPage = () => {
             credentials: 'include',
             withCredentials : true,
             body : JSON.stringify({
-                userName : userName,
-                password : password,
+                userName : "hello",
+                password : "password",
             }),
             headers : {
                 'Accept': 'application/json',
@@ -25,8 +25,9 @@ const LoginPage = () => {
 
         }
 
-        // const response = await fetch ('localhost'+ '/login' , options)
-        // const data = await response.json();
+        const response = await fetch ('http://localhost'+ '/api/login' , options)
+        const data = await response.json();
+        console.log(data);
         // if (data.user){
         //     localStorage.setItem('user', JSON.stringify(data))
         //     window.location.reload(false);
