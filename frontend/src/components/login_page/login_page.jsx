@@ -4,7 +4,7 @@ import {Link, useNavigate} from "react-router-dom";
 const LoginPage = () => {
     const navigate = useNavigate();
 
-    const [userName , setUserName] = useState('');
+    const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
 
     const handleSubmit = async (e) => {
@@ -14,8 +14,8 @@ const LoginPage = () => {
             credentials: 'include',
             withCredentials : true,
             body : JSON.stringify({
-                userName : "hello",
-                password : "password",
+                email : email,
+                password : password,
             }),
             headers : {
                 'Accept': 'application/json',
@@ -27,7 +27,6 @@ const LoginPage = () => {
 
         const response = await fetch ('http://localhost'+ '/api/login' , options)
         const data = await response.json();
-        console.log(data);
         // if (data.user){
         //     localStorage.setItem('user', JSON.stringify(data))
         //     window.location.reload(false);
@@ -40,12 +39,12 @@ const LoginPage = () => {
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
         <div>
-            <label htmlFor="username">username</label>
-            <input type="text" id="username" name="username"/>
+            <label htmlFor="email">email</label>
+            <input onChange={(e)=>{setEmail(e.target.value)}} type="text" id="email" name="email"/>
         </div>
         <div>
             <label htmlFor="password">password</label>
-            <input type="text" id="password" name="password"/>
+            <input onChange={(e)=>{setPassword(e.target.value)}} type="text" id="password" name="password"/>
         </div>
         <button type="submit" className="login-button">LOGIN</button>
         </form>
