@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -45,6 +45,7 @@ const Navbar = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('user')
         window.location.reload(false);
+        return redirect('/login')
 
     }
 
@@ -52,7 +53,7 @@ const Navbar = () => {
         <div>
             <ul>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="login">Login</Link> </li>
+                {token ? null : <li><Link to="login">Login</Link> </li>}
                 <LogOutButton isLoggedIn={isLoggedIn()}/>
             </ul>
         </div>

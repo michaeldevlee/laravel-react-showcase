@@ -9,6 +9,7 @@ import DashBoardPage from './components/dashboard_page/dashboard_page';
 
 function App() {
   const user = localStorage.getItem('user')
+  const token = localStorage.getItem('token')
 
   useEffect(()=>{
     if (user){

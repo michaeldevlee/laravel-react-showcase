@@ -15,8 +15,10 @@ class CustomersController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+        $userCustomers = $user->customers()->get();
 
-        return CustomersResource::collection(Customers::all());
+        return CustomersResource::collection($userCustomers);
     }
 
     /**

@@ -27,11 +27,12 @@ const LoginPage = () => {
 
         const response = await fetch ('http://localhost'+ '/api/login' , options)
         const data = await response.json();
-        console.log(data.data.token);
+        console.log(data);
         if (data){
             localStorage.setItem('user', JSON.stringify(data.data.user))
             localStorage.setItem('token', data.data.token)
             window.location.reload(false);
+            return redirect('/dashboard')
         }
     }
     
