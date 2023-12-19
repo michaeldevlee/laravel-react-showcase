@@ -16,7 +16,11 @@ class CustomersResource extends JsonResource
     {
         return [
             'id'=> $this->id,
-            'name' => $this->name,
+            'firstName' => $this->firstName,
+            'lastName' => $this->lastName,
+            'email' => $this->email,
+            'address' => $this->address,
+            'industry' => $this->industry,
             'active' => (bool) $this->active,
             'invoices' => InvoiceResource::collection($this->invoices)
         ];

@@ -22,7 +22,11 @@ class StoreCustomersRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'string',
+            'firstName' => 'string',
+            'lastName' => 'string',
+            'email' => 'string',
+            'address' => 'string',
+            'industry' => 'string',
             'active' => 'boolean|required'
         ];
     }

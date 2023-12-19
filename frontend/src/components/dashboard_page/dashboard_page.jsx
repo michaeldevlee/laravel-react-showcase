@@ -39,13 +39,33 @@ const DashBoardPage = () => {
         <h2>Customers</h2>
         <p>{customers.length > 0  ? customers.length : null}</p>
         <h2>Customers List</h2>
-        {customers.map((customer, index)=>(
-            <p key={"cust" + index}>
-                <a href="google.com" >
-                {customer.id + " " + customer.name}
-                </a>
-            </p>
-        ))}
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Industry</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {customers.map((customer, index)=>(
+                <tr key={customer.id}>
+                    <td>{customer.id}</td>
+                    <td>{customer.firstName}</td>
+                    <td>{customer.lastName}</td>
+                    <td>{customer.email}</td>
+                    <td>{customer.address}</td>
+                    <td>{customer.industry}</td>
+                    <td><button onClick={() => console.log(customer.id)}>Edit</button></td>
+                    <td><button onClick={() => console.log(customer.id)}>Delete</button></td>
+                </tr>
+            ))}
+            </tbody>
+        </table>
         <button><Link to='/create'>Create</Link></button>
 
 
