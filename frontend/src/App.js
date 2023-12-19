@@ -7,6 +7,7 @@ import SignUpPage from './components/signup_page/signup_page';
 import { useEffect } from 'react';
 import DashBoardPage from './components/dashboard_page/dashboard_page';
 import CreatePage from './components/create_page/create_page';
+import EditPage from './components/edit_page/edit_page';
 
 function App() {
   const user = localStorage.getItem('user')
@@ -20,8 +21,6 @@ function App() {
       console.log('user not logged in');
     }
   },[])
-  
-  const dashboard = <DashBoardPage/>
 
   return (
     <Router>
@@ -29,9 +28,10 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<HomePage/>}></Route>
-        <Route path='/dashboard' element={user ? dashboard : <LoginPage/>}></Route>
-        <Route path='/login' element={user ? dashboard : <LoginPage/>}> </Route>
-        <Route path='/signup' element={user ? dashboard : <SignUpPage/>}> </Route>
+        <Route path='/dashboard' element={user ? <DashBoardPage/> : <LoginPage/>}></Route>
+        <Route path='/login' element={user ? <DashBoardPage/> : <LoginPage/>}> </Route>
+        <Route path='/signup' element={user ? <DashBoardPage/> : <SignUpPage/>}> </Route>
+        <Route path='/edit/:id' element={user ? <EditPage/> : <LoginPage/>}> </Route>
         <Route path='/create' element={user ? <CreatePage/> : <LoginPage/>}> </Route>
       </Routes>
     </div>

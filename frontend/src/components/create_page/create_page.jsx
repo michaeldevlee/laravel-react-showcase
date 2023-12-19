@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CreatePage = () => {
 
     const token = localStorage.getItem("token");
+    const navigate = useNavigate()
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -21,6 +22,7 @@ const CreatePage = () => {
                 firstName: firstName,
                 lastName: lastName,
                 address: address,
+                user_id: 2,
                 email : email,
                 industry : industry,
                 active : true
@@ -36,7 +38,9 @@ const CreatePage = () => {
 
         const response = await fetch ('http://localhost'+ '/api/v1/customers' , options)
         const data = await response.json();
-        window.location.reload(false);
+        if (response.ok){
+            navigate('/dashboard', {replace : true})
+        }
     }
 
     return ( <div>

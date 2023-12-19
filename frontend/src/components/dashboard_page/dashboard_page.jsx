@@ -34,11 +34,29 @@ const DashBoardPage = () => {
 
     }
 
+    const deleteCustomer = async (customer_id) =>{
+        const options = {
+            method : 'DELETE',
+            credentials: 'include',
+            withCredentials : true,
+            headers : {
+                'Accept': 'application/json',
+                'Content-Type' : 'application/json',
+                'Access-Control-Allow-Credentials': true,
+                'Authorization' : 'Bearer ' + token
+            },
+        }
+        const response = await fetch ('http://localhost'+ '/api/v1/customers/' + customer_id , options)
+        if (response){
+            console.log(response)
+            window.location.reload(false)
+            
+        }
+    }
+
     return (<div>
         <h1>DASHBOARD</h1>
         <h2>Customers</h2>
-        <p>{customers.length > 0  ? customers.length : null}</p>
-        <h2>Customers List</h2>
         <table>
             <thead>
                 <tr>
@@ -60,8 +78,8 @@ const DashBoardPage = () => {
                     <td>{customer.email}</td>
                     <td>{customer.address}</td>
                     <td>{customer.industry}</td>
-                    <td><button onClick={() => console.log(customer.id)}>Edit</button></td>
-                    <td><button onClick={() => console.log(customer.id)}>Delete</button></td>
+                    <td><button><Link to={"/edit/" + customer.id} state={{customer_id : customer.id}}>Edit</Link></button></td>
+                    <td><button onClick={() => deleteCustomer(customer.id)}>Delete</button></td>
                 </tr>
             ))}
             </tbody>
