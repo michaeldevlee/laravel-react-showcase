@@ -53,7 +53,9 @@ const Navbar = () => {
         <div>
             <ul>
                 <li><Link to="/">Home</Link></li>
-                {token ? null : <li><Link to="login">Login</Link> </li>}
+                {token ? null : <li><Link to="/login">Login</Link> </li>}
+                {token ? <li><Link to="/dashboard">Dashboard</Link> </li> : null}
+                
                 <LogOutButton isLoggedIn={isLoggedIn()}/>
             </ul>
         </div>

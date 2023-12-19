@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const DashBoardPage = () => {
 
@@ -45,6 +46,7 @@ const DashBoardPage = () => {
                 </a>
             </p>
         ))}
+        <button><Link to='/create'>Create</Link></button>
 
 
     </div>);
