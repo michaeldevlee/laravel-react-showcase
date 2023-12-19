@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, redirect, useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -28,8 +28,10 @@ const LoginPage = () => {
         const response = await fetch ('http://localhost'+ '/api/login' , options)
         const data = await response.json();
         console.log(data.data.token);
-        if (data.data){
+        if (data){
+            localStorage.setItem('user', JSON.stringify(data.data.user))
             localStorage.setItem('token', data.data.token)
+            window.location.reload(false);
         }
     }
     

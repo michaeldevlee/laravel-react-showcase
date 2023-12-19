@@ -31,11 +31,7 @@ const SignUpPage = () => {
 
         const response = await fetch ('http://localhost'+ '/api/register' , options)
         const data = await response.json();
-        console.log(data);
-        // if (data.user){
-        //     localStorage.setItem('user', JSON.stringify(data))
-        //     window.location.reload(false);
-        // }
+        window.location.reload(false);
     }
     
     return ( 
