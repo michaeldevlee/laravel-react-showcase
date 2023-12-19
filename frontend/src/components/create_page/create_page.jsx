@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 const CreatePage = () => {
 
     const token = localStorage.getItem("token");
+    const user_id = JSON.parse(localStorage.getItem("user")).id
     const navigate = useNavigate()
 
     const [firstName, setFirstName] = useState('')
@@ -22,7 +23,7 @@ const CreatePage = () => {
                 firstName: firstName,
                 lastName: lastName,
                 address: address,
-                user_id: 2,
+                user_id: user_id,
                 email : email,
                 industry : industry,
                 active : true

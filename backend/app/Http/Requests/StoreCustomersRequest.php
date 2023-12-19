@@ -27,7 +27,8 @@ class StoreCustomersRequest extends FormRequest
             'email' => 'string',
             'address' => 'string',
             'industry' => 'string',
-            'active' => 'boolean|required'
+            'active' => 'boolean|required',
+            'user_id' => 'integer'
         ];
     }
 }

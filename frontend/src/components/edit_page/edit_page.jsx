@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 const EditPage = () => {
     const { id }= useParams();
     const token = localStorage.getItem("token");
+    const user_id = JSON.parse(localStorage.getItem("user")).id
     const navigate = useNavigate()
     
 
@@ -61,6 +62,7 @@ const EditPage = () => {
                 firstName: firstName,
                 lastName: lastName,
                 address: address,
+                user_id: user_id,
                 email : email,
                 industry : industry,
                 active : true
