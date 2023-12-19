@@ -49,11 +49,11 @@ const SignUpPage = () => {
         </div>
         <div>
             <label htmlFor="password">password</label>
-            <input onChange={(e)=>{setPassword(e.target.value)}} type="text" id="password" name="password"/>
+            <input onChange={(e)=>{setPassword(e.target.value)}} type="password"  id="password" name="password"/>
         </div>
         <div>
             <label htmlFor="confirm-password">confirm password</label>
-            <input onChange={(e)=>{setConfirmPassword(e.target.value)}} type="text" id="confirm-password" name="confirm-password"/>
+            <input onChange={(e)=>{setConfirmPassword(e.target.value)}} type="password"  id="confirm-password" name="confirm-password"/>
         </div>
         <button type="submit" className="signup-button">SIGN UP</button>
         </form>
