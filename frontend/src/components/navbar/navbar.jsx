@@ -3,6 +3,7 @@ import { Link, redirect } from "react-router-dom";
 
 
 const Navbar = () => {
+    const apiURL = process.env.REACT_APP_BASE_URL
     let token = localStorage.getItem('token')
 
     useEffect(()=>{
@@ -40,7 +41,7 @@ const Navbar = () => {
                 'Authorization' : 'Bearer ' + token
             },
         }
-        const response = await fetch ('http://localhost'+ '/api/logout' , options)
+        const response = await fetch (apiURL + '/api/logout' , options)
         const data = await response.json();
         localStorage.removeItem('token')
         localStorage.removeItem('user')

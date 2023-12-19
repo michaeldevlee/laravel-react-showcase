@@ -29,9 +29,11 @@ const SignUpPage = () => {
 
         }
 
-        const response = await fetch ('http://localhost'+ '/api/register' , options)
+        const response = await fetch (process.env.REACT_APP_BASE_URL+ '/api/register' , options)
         const data = await response.json();
-        window.location.reload(false);
+        if (response.ok){
+            navigate('/login', {replace : true})
+        }
     }
     
     return ( 

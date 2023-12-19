@@ -26,7 +26,7 @@ const DashBoardPage = () => {
 
         }
 
-        const response = await fetch ('http://localhost'+ '/api/v1/customers' , options)
+        const response = await fetch (process.env.REACT_APP_BASE_URL+ '/api/v1/customers' , options)
         const data = await response.json();
         if (data.data){
             setCustomers(data.data)
@@ -46,7 +46,7 @@ const DashBoardPage = () => {
                 'Authorization' : 'Bearer ' + token
             },
         }
-        const response = await fetch ('http://localhost'+ '/api/v1/customers/' + customer_id , options)
+        const response = await fetch (process.env.REACT_APP_BASE_URL+ '/api/v1/customers/' + customer_id , options)
         if (response){
             console.log(response)
             window.location.reload(false)

@@ -25,7 +25,7 @@ const LoginPage = () => {
 
         }
 
-        const response = await fetch ('http://localhost'+ '/api/login' , options)
+        const response = await fetch (process.env.REACT_APP_BASE_URL + '/api/login' , options)
         const data = await response.json();
         console.log(data);
         if (data.data.user){

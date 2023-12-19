@@ -34,7 +34,7 @@ const EditPage = () => {
 
         }
 
-        const response = await fetch ('http://localhost'+ '/api/v1/customers/' + id , options)
+        const response = await fetch (process.env.REACT_APP_BASE_URL+ '/api/v1/customers/' + id , options)
         const data = await response.json();
         if (data.data){
             const customer_data = data.data
