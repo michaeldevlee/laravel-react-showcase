@@ -32,6 +32,7 @@ const LoginPage = () => {
             localStorage.setItem('user', JSON.stringify(data.data.user))
             localStorage.setItem('token', data.data.token)
             navigate('/dashboard', {replace : true})
+            window.location.reload(false)
         }
         else{
             console.log(data.status);

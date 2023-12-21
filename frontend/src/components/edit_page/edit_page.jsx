@@ -48,6 +48,7 @@ const EditPage = () => {
         else{
             
             navigate('/dashboard', {replace : true})
+            window.location.reload(false)
         }
 
     }

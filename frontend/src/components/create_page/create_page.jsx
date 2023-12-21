@@ -41,6 +41,7 @@ const CreatePage = () => {
         const data = await response.json();
         if (response.ok){
             navigate('/dashboard', {replace : true})
+            window.location.reload(false)
         }
     }
 
