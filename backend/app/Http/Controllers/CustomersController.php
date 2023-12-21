@@ -36,8 +36,10 @@ class CustomersController extends Controller
      */
     public function show(Customers $customer)
     {
+        $user = auth()->user();
+        $userCustomer = $user->customers()->find($customer->id);
 
-        return CustomersResource::make($customer);
+        return CustomersResource::make($userCustomer);
     }
 
     /**
@@ -45,8 +47,11 @@ class CustomersController extends Controller
      */
     public function update(UpdateCustomersRequest $request, Customers $customer)
     {
-        $customer->update($request->validated());
-        return CustomersResource::make($customer);
+        $user = auth()->user();
+        $userCustomer = $user->customers()->find($customer->id);
+
+        $userCustomer->update($request->validated());
+        return CustomersResource::make($userCustomer);
     }
 
     /**
@@ -54,7 +59,9 @@ class CustomersController extends Controller
      */
     public function destroy(Customers $customer)
     {
-        $customer->delete();
+        $user = auth()->user();
+        $userCustomer = $user->customers()->find($customer->id);
+        $userCustomer->delete();
         return response()->noContent();
     }
 }
