@@ -5,6 +5,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/certbot
 .env
 .env.backup
 .env.production
