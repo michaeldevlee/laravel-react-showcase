@@ -6,7 +6,6 @@ services:
     image: nginx:latest
     ports:
       - "80:80" 
-      - "443:443" 
     volumes:
       - type: bind
         source: ./nginx.conf
@@ -24,8 +23,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/usr/share/nginx/html
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
     ports:
       - "9000:9000" # Map host machine's port 9000 to PHP-FPM's port 9000
     depends_on:
@@ -48,15 +45,6 @@ services:
       - "3306:3306" # Map host machine's port 3306 to MySQL's port 3306
     networks:
       - laravel-network
-
-  # Certbot service
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
-    command: certonly --webroot -w /var/www/certbot --force-renewal --email mikeleevt@gmail.com -d laravelshowcase.crabdance.com --agree-tos
 
 
 volumes:
