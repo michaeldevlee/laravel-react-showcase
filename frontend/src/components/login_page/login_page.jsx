@@ -31,8 +31,7 @@ const LoginPage = () => {
         if (data.data.user){
             localStorage.setItem('user', JSON.stringify(data.data.user))
             localStorage.setItem('token', data.data.token)
-            window.location.reload(false);
-            return redirect('/dashboard')
+            navigate('/dashboard', {replace : true})
         }
         else{
             console.log(data.status);

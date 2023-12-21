@@ -45,8 +45,7 @@ const Navbar = () => {
         const data = await response.json();
         localStorage.removeItem('token')
         localStorage.removeItem('user')
-        window.location.reload(false);
-        return redirect('/login')
+        navigate('/login', {replace : true})
 
     }
 
