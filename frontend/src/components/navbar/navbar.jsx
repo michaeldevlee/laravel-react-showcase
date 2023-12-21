@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => {
     const apiURL = process.env.REACT_APP_BASE_URL
     let token = localStorage.getItem('token')
+    const navigate = useNavigate();
 
     useEffect(()=>{
         token = localStorage.getItem('token')
