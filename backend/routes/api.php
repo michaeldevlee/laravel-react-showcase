@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ItemController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +30,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::group(['middleware' => ['auth:sanctum']],function(){
     Route::prefix('/v1')->group(function (){
         Route::apiResource('/customers', CustomersController::class);
-        Route::apiResource('/invoices', InvoiceController::class);
+        Route::apiResource('customers.invoices', InvoiceController::class);
     });
     
     Route::post('/logout', [AuthController::class, 'logout']);

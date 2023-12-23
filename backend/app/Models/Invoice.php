@@ -9,13 +9,9 @@ class Invoice extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['cost', 'customers_id'];
+    protected $fillable = ['cost', 'customers_id', 'title', 'description'];
 
     public function customer() {
         return $this->belongsTo(Customers::class);
-    }
-
-    public function items(){
-        return $this->hasMany(Item::class);
     }
 }

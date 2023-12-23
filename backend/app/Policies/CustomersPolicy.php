@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Customers;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class CustomersPolicy
 {
@@ -13,7 +12,7 @@ class CustomersPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
@@ -21,7 +20,7 @@ class CustomersPolicy
      */
     public function view(User $user, Customers $customers): bool
     {
-        //
+        return $user->id === $customers->user_id;
     }
 
     /**
@@ -35,17 +34,17 @@ class CustomersPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Customers $customers): bool
+    public function update(User $user, Customers $customer): bool
     {
-        //
+        return $user->id === $customer->user_id;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Customers $customers): bool
+    public function delete(User $user, Customers $customer): bool
     {
-        //
+        return $user->id === $customer->user_id;
     }
 
     /**

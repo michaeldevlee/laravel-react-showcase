@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customers_id')->default(1);
-            $table->float('cost')->default(10.00);
+            $table->float('cost')->default(0);
+            $table->string('description');
+            $table->string('title');
             $table->timestamps();
         });
     }

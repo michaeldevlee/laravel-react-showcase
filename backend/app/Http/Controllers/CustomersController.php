@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class CustomersController extends Controller
 {
+    public function __construct()
+    {   
+        $this->authorizeResource(Customers::class, ['customer', 'user']);
+    }
+    
     /**
      * Display a listing of the resource.
      */
@@ -17,7 +22,7 @@ class CustomersController extends Controller
     {
         $user = auth()->user();
         $userCustomers = $user->customers()->get();
-
+        
         return CustomersResource::collection($userCustomers);
     }
 
@@ -37,9 +42,13 @@ class CustomersController extends Controller
     public function show(Customers $customer)
     {
         $user = auth()->user();
-        $userCustomer = $user->customers()->find($customer->id);
+        if ($user->can('view', $customer)){
+            
+            return CustomersResource::make($customer);
+        }
+        
+        return abort(404);
 
-        return CustomersResource::make($userCustomer);
     }
 
     /**
@@ -48,10 +57,12 @@ class CustomersController extends Controller
     public function update(UpdateCustomersRequest $request, Customers $customer)
     {
         $user = auth()->user();
-        $userCustomer = $user->customers()->find($customer->id);
 
-        $userCustomer->update($request->validated());
-        return CustomersResource::make($userCustomer);
+        if ($user->can('update', $customer)){
+            $customer->update($request->validated());
+            return CustomersResource::make($customer);
+        }
+        return abort(404);
     }
 
     /**
@@ -60,8 +71,12 @@ class CustomersController extends Controller
     public function destroy(Customers $customer)
     {
         $user = auth()->user();
-        $userCustomer = $user->customers()->find($customer->id);
-        $userCustomer->delete();
-        return response()->noContent();
+        if ($user->can('delete', $customer)){
+            $customer->delete();
+            return response()->noContent();
+        }
+
+        return abort(404);
+
     }
 }
