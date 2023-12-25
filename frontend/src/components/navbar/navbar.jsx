@@ -53,12 +53,16 @@ const Navbar = () => {
 
     return ( <nav className="navbar">
         <div>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                {token ? null : <li><Link to="/login">Login</Link> </li>}
-                {token ? <li><Link to="/dashboard">Dashboard</Link> </li> : null}
+            <ul className="navbar-list">
+                <section className="navbar-left">
+                    <li><Link style={{ textDecoration:'none', color: 'black' }} to="/">Home</Link></li>
+                    {token ? null : <li><Link style={{ textDecoration:'none', color: 'black'  }} to="/login">Login</Link> </li>}
+                    {token ? <li><Link style={{ textDecoration:'none' }} to="/dashboard">Dashboard</Link> </li> : null}
+                </section>
                 
-                <LogOutButton isLoggedIn={isLoggedIn()}/>
+                <section className="navbar-right">
+                    <LogOutButton isLoggedIn={isLoggedIn()}/>
+                </section>
             </ul>
         </div>
     </nav> );

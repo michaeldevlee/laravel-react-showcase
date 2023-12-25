@@ -41,14 +41,14 @@ const LoginPage = () => {
     
     return ( 
     
-    <div>
+    <div className="form">
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-input form-item">
             <label htmlFor="email">email</label>
             <input onChange={(e)=>{setEmail(e.target.value)}} type="text" id="email" name="email"/>
         </div>
-        <div>
+        <div className="form-input form-item">
             <label htmlFor="password">password</label>
             <input onChange={(e)=>{setPassword(e.target.value)}} type="password" id="password" name="password"/>
         </div>

@@ -1,5 +1,10 @@
 const HomePage = () => {
-    return ( <h1>InvoicerPro</h1> );
+    return ( 
+    <div>
+        <section className="hero">
+            <h1>InvoicerPro</h1>
+        </section>
+    </div> );
 }
  
 export default HomePage;
