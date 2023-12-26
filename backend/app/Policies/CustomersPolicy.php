@@ -28,7 +28,7 @@ class CustomersPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return true;
     }
 
     /**
