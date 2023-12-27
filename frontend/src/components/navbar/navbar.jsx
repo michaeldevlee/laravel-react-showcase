@@ -21,7 +21,7 @@ const Navbar = () => {
 
     const LogOutButton = ({isLoggedIn}) => {
         if (isLoggedIn){
-            return <li><button onClick={handleLogOut}>logout</button></li>
+            return <li><a onClick={handleLogOut}>logout</a></li>
         }
         else{
             return null

@@ -45,6 +45,11 @@ const CreatePage = () => {
         }
     }
 
+    const handleExit = ()=>{
+        navigate("/dashboard", {replace : true})
+        window.location.reload(false)
+    }
+
     return ( <div>
         <h1>Create Customer</h1>
         <form onSubmit={handleSubmit}>
@@ -69,7 +74,7 @@ const CreatePage = () => {
             <input onChange={(e)=>{setIndustry(e.target.value)}} type="text" id="industry" name="industry" required/>
         </div>
         <button type="submit" className="create-customer-button">Create</button>
-        <button><Link to="/dashboard">Cancel</Link></button>
+        <button onClick={()=>handleExit()}>Cancel</button>
 
         </form>
         
