@@ -6,6 +6,7 @@ const LoginPage = () => {
 
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
+    const [errors, setErrors] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,14 +29,19 @@ const LoginPage = () => {
         const response = await fetch (process.env.REACT_APP_BASE_URL + '/api/login' , options)
         const data = await response.json();
         console.log(data);
-        if (data.data.user){
+        if (response.ok){
             localStorage.setItem('user', JSON.stringify(data.data.user))
             localStorage.setItem('token', data.data.token)
             navigate('/dashboard', {replace : true})
             window.location.reload(false)
         }
         else{
-            console.log(data.status);
+            if (response.status == 401){
+                setErrors(data.message)
+            }
+            else{
+                setErrors(data.errors)
+            }
         }
     }
     
@@ -46,12 +52,13 @@ const LoginPage = () => {
         <form  onSubmit={handleSubmit}>
         <div className="form-input form-item">
             <label htmlFor="email">email</label>
-            <input onChange={(e)=>{setEmail(e.target.value)}} type="text" id="email" name="email"/>
+            <input onChange={(e)=>{setEmail(e.target.value)}} required type="text" id="email" name="email"/>
         </div>
         <div className="form-input form-item">
             <label htmlFor="password">password</label>
-            <input onChange={(e)=>{setPassword(e.target.value)}} type="password" id="password" name="password"/>
+            <input onChange={(e)=>{setPassword(e.target.value)}} required type="password" id="password" name="password"/>
         </div>
+        {errors ? <p className="login-error">Email or password is incorrect</p> : null}
         <div className="resource-button-pairs"><button type="submit" className="dashboard-button create-button">LOGIN</button></div>
         </form>
         <p>Don't have an account? <Link to="/signup">Sign Up</Link></p> 

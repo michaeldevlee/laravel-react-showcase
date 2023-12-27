@@ -147,3 +147,9 @@ button:hover{
 .create-button{
     background-color: lightgreen;
 }
+
+.login-error{
+    background-color: lightcoral;
+    border-radius: 0.2rem;
+    padding: 0.5rem;
+}
