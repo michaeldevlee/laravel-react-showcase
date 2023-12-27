@@ -102,11 +102,11 @@ const DashBoardPage = () => {
                                             <td>{invoice.title}</td>
                                             <td>{invoice.description}</td>
                                             <td>{invoice.cost}</td>
-                                            <td ><button id="edit-button" className="dashboard-button"><Link 
+                                            <td ><Link 
                                             to={"/customers/" + selectedCustomer.id + "/invoices/" + invoice.id + '/edit'}
                                             state={{customer : selectedCustomer}}
-                                                >Edit</Link></button></td>
-                                            <td><button id="delete-button" className="dashboard-button" onClick={() => deleteInvoice(selectedCustomer.id, invoice.id)}>Delete</button></td>
+                                                ><button className="dashboard-button edit-button">Edit</button></Link></td>
+                                            <td><button className="dashboard-button delete-button" onClick={() => deleteInvoice(selectedCustomer.id, invoice.id)}>Delete</button></td>
                                         </tr>
                                 )) : null
                             }
@@ -115,10 +115,10 @@ const DashBoardPage = () => {
                 </table>
                 {
                 selectedCustomer ? 
-                <button id="create-button" className="dashboard-button"><Link 
+                <Link 
                 to={'/customers/' + selectedCustomer.id+ '/invoices/create'}
-                state={{customer : selectedCustomer}}>
-                    Create</Link></button> : null
+                state={{customer : selectedCustomer}}><button className="dashboard-button create-button">
+                    Create</button></Link> : null
                     }
             </section>
         )
@@ -145,13 +145,13 @@ const DashBoardPage = () => {
                             <td>{customer.firstName}</td>
                             <td>{customer.lastName}</td>
                             <td>{customer.industry}</td>
-                            <td><button id="edit-button" className="dashboard-button"><Link to={"/customers/" + customer.id + "/edit/"} state={{customer_id : customer.id}}>Edit</Link></button></td>
-                            <td><button id="delete-button" className="dashboard-button" onClick={() => deleteCustomer(customer.id)}>Delete</button></td>
+                            <td><Link to={"/customers/" + customer.id + "/edit/"} state={{customer_id : customer.id}}><button className="dashboard-button edit-button">Edit</button></Link></td>
+                            <td><button className="dashboard-button delete-button" onClick={() => deleteCustomer(customer.id)}>Delete</button></td>
                         </tr>
                     )) : null}
                     </tbody>
                 </table>
-                <button id="create-button" className="dashboard-button"><Link to='/customers/create'>Create</Link></button>
+                <Link to='/customers/create'><button className="dashboard-button create-button">Create</button></Link>
             </section>
         )
     }

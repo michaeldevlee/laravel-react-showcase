@@ -41,9 +41,9 @@ const LoginPage = () => {
     
     return ( 
     
-    <div className="form">
+    <div className="form login-form">
         <h1>Login</h1>
-        <form onSubmit={handleSubmit}>
+        <form  onSubmit={handleSubmit}>
         <div className="form-input form-item">
             <label htmlFor="email">email</label>
             <input onChange={(e)=>{setEmail(e.target.value)}} type="text" id="email" name="email"/>
@@ -52,7 +52,7 @@ const LoginPage = () => {
             <label htmlFor="password">password</label>
             <input onChange={(e)=>{setPassword(e.target.value)}} type="password" id="password" name="password"/>
         </div>
-        <button type="submit" className="login-button">LOGIN</button>
+        <div className="resource-button-pairs"><button type="submit" className="dashboard-button create-button">LOGIN</button></div>
         </form>
         <p>Don't have an account? <Link to="/signup">Sign Up</Link></p> 
     </div>

@@ -52,29 +52,31 @@ const CreatePage = () => {
 
     return ( <div>
         <h1>Create Customer</h1>
-        <form onSubmit={handleSubmit}>
-        <div>
+        <form className="form resource-form" onSubmit={handleSubmit}>
+        <div className="form-input form-item">
             <label htmlFor="first-name">first name</label>
             <input onChange={(e)=>{setFirstName(e.target.value)}} type="text" id="first-name" name="first-name" required/>
         </div>
-        <div>
+        <div className="form-input form-item">
             <label htmlFor="last-name">last name</label>
             <input onChange={(e)=>{setLastName(e.target.value)}} type="text" id="last-name" name="last-name" required/>
         </div>
-        <div>
+        <div className="form-input form-item">
             <label htmlFor="address">address</label>
             <input onChange={(e)=>{setAddress(e.target.value)}} type="text" id="address" name="address" required/>
         </div>
-        <div>
+        <div className="form-input form-item">
             <label htmlFor="email">email</label>
             <input onChange={(e)=>{setEmail(e.target.value)}} type="text" id="email" name="email" required/>
         </div>
-        <div>
+        <div className="form-input form-item">
             <label htmlFor="industry">industry</label>
             <input onChange={(e)=>{setIndustry(e.target.value)}} type="text" id="industry" name="industry" required/>
+        </div >
+        <div className="resource-button-pairs">
+            <button type="submit" className="dashboard-button create-button">Create</button>
+            <button className="dashboard-button delete-button" onClick={()=>handleExit()}>Cancel</button>
         </div>
-        <button type="submit" className="create-customer-button">Create</button>
-        <button onClick={()=>handleExit()}>Cancel</button>
 
         </form>
         

@@ -8,7 +8,6 @@
     margin: 0;
     padding: 0;
     min-height: 720px;
-    height: 100vh;
     
 }
 
@@ -38,6 +37,10 @@ input{
 
 tr:hover{
     background-color: lightcyan;
+}
+
+button:hover{
+    opacity: 0.5;
 }
 
 .dashboard-section{
@@ -75,6 +78,23 @@ tr:hover{
 
 .form-item{
     margin-bottom: 2rem;
+}
+
+.resource-form{
+    width: 100vw;
+    max-width: 25rem;
+}
+
+.resource-button-pairs{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.login-form{
+    max-height: 400px;
 }
 
 .navbar{
@@ -115,15 +135,15 @@ tr:hover{
     border-radius: 0.2rem;
 }
 
-#edit-button{
+.edit-button{
     background-color: lightblue;
     color: white;
 }
 
-#delete-button{
+.delete-button{
     background-color: pink;
 }
 
-#create-button{
+.create-button{
     background-color: lightgreen;
 }

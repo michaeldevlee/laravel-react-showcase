@@ -81,26 +81,27 @@ const CreatePageInvoices = () => {
 
     return ( <div>
         <h1>Create Invoice</h1>
-        <form onSubmit={handleSubmit}>
-        <select name="customer-select" id="customer-select"></select>
-        <div>
+        <form className="form resource-form" onSubmit={handleSubmit}>
+        <div className="form-input form-item">
             <label htmlFor="customer-name">customer name</label>
             <input onChange={(e)=>{setCustomerName(e.target.value)}} disabled value={customerName} type="text" id="customer-name" name="customer-name" required/>
         </div>
-        <div>
+        <div className="form-input form-item">
             <label htmlFor="title">title</label>
             <input onChange={(e)=>{setTitle(e.target.value)}} type="text" id="first-name" name="first-name" required/>
         </div>
-        <div>
+        <div className="form-input form-item">
             <label htmlFor="description">description</label>
             <input onChange={(e)=>{setDescription(e.target.value)}} type="text" id="last-name" name="last-name" required/>
         </div>
-        <div>
+        <div className="form-input form-item">
             <label htmlFor="cost">cost</label>
             <input onChange={(e)=>{setCost(e.target.value)}} type="text" id="address" name="address" required/>
         </div>
-        <button type="submit" className="create-customer-button">Create</button>
-        <button onClick={()=>handleExit()}>Cancel</button>
+        <div className="resource-button-pairs">
+            <button type="submit" className="dashboard-button create-button">Create</button>
+            <button className="dashboard-button delete-button" onClick={()=>handleExit()}>Cancel</button>
+        </div>
 
         </form>
         

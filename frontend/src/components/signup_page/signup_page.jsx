@@ -57,7 +57,7 @@ const SignUpPage = () => {
             <label htmlFor="confirm-password">confirm password</label>
             <input onChange={(e)=>{setConfirmPassword(e.target.value)}} type="password"  id="confirm-password" name="confirm-password"/>
         </div>
-        <button type="submit" className="signup-button">SIGN UP</button>
+        <div className="resource-button-pairs"><button type="submit" className="dashboard-button create-button">SIGN UP</button></div>
         </form>
         <p>Already have an account? <Link to="/login">Log in</Link></p> 
     </div>
